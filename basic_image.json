@@ -2,6 +2,12 @@
   "builders": [
   {
     "type": "openstack",
+    "identity_endpoint": "http://<destack-ip>:5000/v3",
+    "tenant_name": "admin",
+    "domain_name": "Default",
+    "username": "admin",
+    "password": "<your admin password>",
+    "region": "RegionOne",
     "source_image": "cirros",
     "ssh_username": "cirros",
     "openstack_provider": "nova",
@@ -14,9 +20,6 @@
   "provisioners": [
   {
     "type": "shell",
-    #"script": "local_path_to_script/script.sh",
-    #"pause_before": "10s",
-    #"execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{ .Path }}"
     "execute_command": "touch /coco.txt"
   }
   ]
