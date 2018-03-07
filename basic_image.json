@@ -1,0 +1,21 @@
+{
+"builders": [{
+"type": "openstack",
+"source_image": "b6654be9-9602-445d-87cd-31c6229d5f50",
+"ssh_username": "ubuntu",
+"openstack_provider": "nova",
+"image_name": "ubuntu_1604-x86_64-cloud-packer",
+"networks": "7844b057-5f71-40f7-b1c2-01ec931ddcd3",
+"security_groups": "default",
+"flavor": "m1.medium"
+}],
+"provisioners": [
+{
+"type": "shell",
+"script": "/home/ubuntu/PACKER/shell-scripts/citrix_ubuntu.sh",
+"pause_before": "10s",
+"execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E {{
+.Path }}"
+}
+]
+}
