@@ -13,6 +13,7 @@
     "source_image_name": "cirros",
     "flavor": "tempest1",
     "networks": "<your network UUID>",
+    "floating_ip_pool": "public",
     "security_groups": "default",
     "insecure": "true"
   }
@@ -21,7 +22,7 @@
   {
     "type": "shell",
     "inline": [
-         "sudo echo 'This instance was provisioned by Packer' > /coco.txt"
+         "sudo echo 'This instance was provisioned by Packer' > /tmp/coco.txt"
     ]
   }
   ]
