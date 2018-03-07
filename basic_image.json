@@ -12,7 +12,7 @@
     "image_name": "cirros-gold",
     "source_image_name": "cirros",
     "flavor": "tempest1",
-    "networks": "<your network UUID>",
+    "networks": "<your private network UUID>",
     "floating_ip_pool": "public",
     "security_groups": "default",
     "insecure": "true"
