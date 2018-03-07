@@ -2,25 +2,27 @@
   "builders": [
   {
     "type": "openstack",
-    "identity_endpoint": "http://<destack-ip>:5000/v3",
+    "identity_endpoint": "http://<keystone-public-ip>:5000/v3",
     "tenant_name": "admin",
     "domain_name": "Default",
     "username": "admin",
     "password": "<your admin password>",
     "region": "RegionOne",
-    "source_image": "cirros",
     "ssh_username": "cirros",
-    "openstack_provider": "nova",
     "image_name": "cirros-gold",
-    "networks": "private",
+    "source_image_name": "cirros",
+    "flavor": "tempest1",
+    "networks": "<your network UUID>",
     "security_groups": "default",
-    "flavor": "tempest_1"
+    "insecure": "true"
   }
   ],
   "provisioners": [
   {
     "type": "shell",
-    "execute_command": "touch /coco.txt"
+    "inline": [
+         "sudo echo 'This instance was provisioned by Packer' > /coco.txt"
+    ]
   }
   ]
 }
