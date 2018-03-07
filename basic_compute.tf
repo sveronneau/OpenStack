@@ -1,11 +1,10 @@
-# Basic instance with 1 network and a Floating IP
+# Basic instance with 1 network, 1 Floating IP and 1 Volume attached
 resource "openstack_compute_instance_v2" "basic" {
   name            = "basic"
-  image_name      = "cirros-gold"
+  image_id        = "${var.image_id}"
   flavor_name     = "tempest1"
   key_pair        = ""
   security_groups = ["default"]
-  user_data       = "#cloud-config\nhostname: coco_1.mydomain.com\nfqdn: coco_1.mydomain.com"
 
   metadata {
     this = "that"
@@ -13,6 +12,22 @@ resource "openstack_compute_instance_v2" "basic" {
 
   network {
     name = "private"
+  }
+
+  block_device {
+    boot_index            = 0
+    delete_on_termination = true
+    destination_type      = "local"
+    source_type           = "image"
+    uuid                  = "${var.image_id}"
+  }
+
+  block_device {
+    boot_index            = 1
+    delete_on_termination = true
+    destination_type      = "volume"
+    source_type           = "blank"
+    volume_size           = 5
   }
 }
 

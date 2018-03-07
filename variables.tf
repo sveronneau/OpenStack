@@ -8,3 +8,5 @@ provider "openstack" {
   region      = "RegionOne"
   insecure    = "true"
 }
+
+variable "image_id" { default = "<your image ID" }
